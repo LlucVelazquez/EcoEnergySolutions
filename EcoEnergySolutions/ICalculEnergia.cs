@@ -11,6 +11,5 @@ namespace EcoEnergySolutions
         void ConfigurarParametres(double valor);
         double CalcularEnergia();
         void MostrarInforme();
-
     }
 }
