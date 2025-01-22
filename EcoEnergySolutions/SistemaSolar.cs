@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcoEnergySolutions
 {
-    public class SistemaSolar : SistemaEnergia, ICalculEnergia
+    public class SistemaSolar : SistemaEnergia
     {
-
-        public void ConfigurarParametres
     }
 }
