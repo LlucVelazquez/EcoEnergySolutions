@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace EcoEnergySolutions
 {
-    public interface ICalculEnergia
+    public class SistemaSolar : SistemaEnergia, ICalculEnergia
     {
-        void ConfigurarParametres(float valor);
-        float CalcularEnergia();
-        void MostrarInforme();
+
+        public void ConfigurarParametres
     }
 }
