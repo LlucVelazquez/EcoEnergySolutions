@@ -9,7 +9,7 @@ namespace EcoEnergySolutions
     public interface ICalculEnergia
     {
         void ConfigurarParametres(float valor);
-        float CalcularEnergia();
+        double CalcularEnergia();
         void MostrarInforme();
     }
 }
