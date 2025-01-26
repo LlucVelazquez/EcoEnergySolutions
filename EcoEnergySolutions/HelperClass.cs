@@ -8,7 +8,7 @@ namespace EcoEnergySolutions
 {
     public class HelperClass
     {
-        public static void BucleComprovacio(string Missatge, int num)
+        /*public static void BucleComprovacio(string Missatge, int num)
         {
             bool flag = true;
             while (flag)
@@ -34,6 +34,6 @@ namespace EcoEnergySolutions
             }
             return num;
         }
-
+        */
     }
 }

@@ -16,8 +16,7 @@
                 switch (menuNumSelect)
                 {
                     case "1":
-                        // Iniciar simulacio
-                        Console.WriteLine("1 cas");
+                        IniciarSimulacio();
                         break;
                     case "2":
                         // informe
@@ -37,6 +36,76 @@
         public static void IniciarSimulacio()
         {
             const string MsgSimulacions = "Quantes simulacions vols generar?";
+            const string MsgSenseSimulacions = "No hi ha espai per mes simulacions";
+            const string MsgTipusSistema = "Selecciona el tipus de sistema: " +
+                "\n1. Solar" +
+                "\n2. Eolic" +
+                "\n3. Hidroelectric";
+            const string MsgError = "Opcio no valida";
+            SistemaEnergia[] simulacions;
+            string tipusSistema = "";
+            bool flag = true;
+            int numSimulacions = 0;
+            int simulacionsActuals = 0;
+            BucleComprovacio(MsgSimulacions, numSimulacions);
+            simulacions = new SistemaEnergia[numSimulacions];
+
+            /*if (simulacionsActuals >= simulacions.Length)
+            {
+                Console.WriteLine(MsgSenseSimulacions);
+                return;
+            }*/
+            while (flag)
+            {
+                Console.WriteLine(MsgTipusSistema);
+                tipusSistema = Console.ReadLine();
+                SistemaEnergia sistema = null;
+                switch (tipusSistema)
+                {
+                    case "1":
+                        sistema = new SistemaSolar();
+                        flag = false;
+                        break;
+                    case "2":
+                        sistema = new SistemaEolic();
+                        flag = false;
+                        break;
+                    case "3":
+                        sistema = new SistemaHidroelectric();
+                        flag = false;
+                        break;
+                    default:
+                        Console.WriteLine(MsgError);
+                        flag = true;
+                        break;
+                }
+            }
+        }
+        public static void BucleComprovacio(string Missatge, int num)
+        {
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine(Missatge);
+                num = ValidarNum(Console.ReadLine());
+                if (num != 0)
+                {
+                    flag = false;
+                }
+            }
+        }
+        public static int ValidarNum(string input)
+        {
+            int num = 0;
+            try
+            {
+                num = int.Parse(input);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return num;
         }
     }
 }
