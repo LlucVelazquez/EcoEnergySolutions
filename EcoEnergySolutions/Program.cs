@@ -2,6 +2,7 @@
 {
     internal class Program
     {
+        static SistemaEnergia[] simulacions;
         public static void Main(string[] args)
         {
             const string MenuProgramMsg = "1. Iniciar Simulació: " +
@@ -9,6 +10,7 @@
                 "\n3. Sortir: ";
             bool sortir = true;
             string menuNumSelect = "";
+            int simulacionsActuals = 0;
             while (sortir)
             {
                 Console.WriteLine(MenuProgramMsg);
@@ -16,10 +18,10 @@
                 switch (menuNumSelect)
                 {
                     case "1":
-                        IniciarSimulacio();
+                        IniciarSimulacio(ref simulacionsActuals);
                         break;
                     case "2":
-                        // informe
+                        InformeSimulacions(ref simulacionsActuals);
                         Console.WriteLine("2 cas");
                         break;
                     case "3":
@@ -33,7 +35,7 @@
                 }
             }
         }
-        public static void IniciarSimulacio()
+        public static void IniciarSimulacio(ref int simulacionsActuals)
         {
             const string MsgSimulacions = "Quantes simulacions vols generar?";
             const string MsgSenseSimulacions = "No hi ha espai per mes simulacions";
@@ -42,11 +44,9 @@
                 "\n2. Eolic" +
                 "\n3. Hidroelectric";
             const string MsgError = "Opcio no valida";
-            SistemaEnergia[] simulacions;
             string tipusSistema = "";
             bool flag = true;
             int numSimulacions = 0;
-            int simulacionsActuals = 0;
             BucleComprovacio(MsgSimulacions, numSimulacions);
             simulacions = new SistemaEnergia[numSimulacions];
 
@@ -55,11 +55,11 @@
                 Console.WriteLine(MsgSenseSimulacions);
                 return;
             }*/
+            SistemaEnergia sistema = null;
             while (flag)
             {
                 Console.WriteLine(MsgTipusSistema);
                 tipusSistema = Console.ReadLine();
-                SistemaEnergia sistema = null;
                 switch (tipusSistema)
                 {
                     case "1":
@@ -80,6 +80,22 @@
                         break;
                 }
             }
+            /*sistema.ConfigurarParametres();
+            sistema.CalcularEnergia();
+            sistema.DataSimulacio = DateTime.Now;
+
+            simulacions[simulacionsActuals] = sistema;
+            simulacionsActuals++;*/
+        }
+        public static void InformeSimulacions(ref int simulacionsActuals)
+        {
+            /*Console.WriteLine("\n--- Informe de Simulacions ---");
+            Console.WriteLine("Data\t\t\tTipus\t\tEnergia (kWh)");
+            for (int i = 0; i < simulacionsActuals; i++)
+            {
+                SistemaEnergia sim = simulacions[i];
+                Console.WriteLine($"{sim.DataSimulacio}\t{sim.GetType().Name}\t{sim.EnergiaGenerada:F2}");
+            }*/
         }
         public static void BucleComprovacio(string Missatge, int num)
         {
