@@ -2,9 +2,18 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            const string MenuProgramMsg = "A. Iniciar Simulació: Permet seleccionar";
+            int menuNumSelect = 0;
+            HelperClass.BucleComprovacio(MenuProgramMsg, menuNumSelect);
+            switch (menuNumSelect)
+            {
+                case 1:
+                // nose
+                case 2:
+
+            }
         }
     }
 }
