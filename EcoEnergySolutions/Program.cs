@@ -5,27 +5,38 @@
         public static void Main(string[] args)
         {
             const string MenuProgramMsg = "1. Iniciar Simulació: " +
-                "2. Veure informe de simulacions: " +
-                "3. Sortir: ";
-            bool sortir = false;
-            int menuNumSelect = 0;
-            while (!sortir)
+                "\n2. Veure informe de simulacions: " +
+                "\n3. Sortir: ";
+            bool sortir = true;
+            string menuNumSelect = "";
+            while (sortir)
             {
-                HelperClass.BucleComprovacio(MenuProgramMsg, menuNumSelect);
+                Console.WriteLine(MenuProgramMsg);
+                menuNumSelect = Console.ReadLine();
                 switch (menuNumSelect)
                 {
-                    case 1:
+                    case "1":
                         // Iniciar simulacio
-                    case 2:
+                        Console.WriteLine("1 cas");
+                        break;
+                    case "2":
                         // informe
-                    case 3:
-                        sortir = true;
+                        Console.WriteLine("2 cas");
+                        break;
+                    case "3":
+                        sortir = false;
+                        Console.WriteLine("3 cas");
                         break;
                     default:
+                        Console.WriteLine("4 cas");
                         // errror
                         break;
                 }
             }
+        }
+        public static void IniciarSimulacio()
+        {
+            const string MsgSimulacions = "Quantes simulacions vols generar?";
         }
     }
 }
