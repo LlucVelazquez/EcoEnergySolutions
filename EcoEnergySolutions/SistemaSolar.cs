@@ -6,30 +6,26 @@ using System.Threading.Tasks;
 
 namespace EcoEnergySolutions
 {
-    public class SistemaSolar : SistemaEnergia, ICalculEnergia
+    public class SistemaSolar : SistemaEnergia
     {
         public float HoresDeSol {  get; set; }
 
-        public SistemaSolar(float horesDeSol)
-        {
-            HoresDeSol = horesDeSol;
-        }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="valor"></param>
-        public void ConfigurarParametres(float valor) 
+        public override void ConfigurarParametres(float valor) 
         {
+            while (valor < 1)
+            {
+
+            }
             valor = HoresDeSol;
         }
-        public double CalcularEnergia()
+        public override double CalcularEnergia()
         {
-            double energiaGenerada = HoresDeSol * 1.5;
-            return energiaGenerada;
-
-        }
-        public void MostrarInforme()
-        {
+            EnergiaGenerada = HoresDeSol * 1.5;
+            return EnergiaGenerada;
 
         }
     }

@@ -10,7 +10,9 @@
             switch (menuNumSelect)
             {
                 case 1:
-                    // nose
+                // nose
+                case 2:
+
             }
         }
     }

@@ -6,29 +6,24 @@ using System.Threading.Tasks;
 
 namespace EcoEnergySolutions
 {
-    public class SistemaEolic : SistemaEnergia, ICalculEnergia
+    public class SistemaEolic : SistemaEnergia
     {
         public float VelocitatVent {  get; set; }
 
-        public SistemaEolic(float velocitatVent)
+        public override void ConfigurarParametres(float valor)
         {
-            VelocitatVent = velocitatVent;
-        }
-        public void ConfigurarParametres(float valor)
-        {
-            throw new NotImplementedException();
+            while (valor <= 5)
+            {
+
+            }
+            valor = VelocitatVent;
         }
 
-        public double CalcularEnergia()
+        public override double CalcularEnergia()
         {
-            double EnergiaGenerada = Math.Pow(VelocitatVent, 3) * 0.2;
+            EnergiaGenerada = Math.Pow(VelocitatVent, 3) * 0.2;
             return EnergiaGenerada;
         }
 
-
-        public void MostrarInforme()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

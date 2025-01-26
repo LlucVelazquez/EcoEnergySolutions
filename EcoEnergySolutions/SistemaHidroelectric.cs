@@ -6,29 +6,23 @@ using System.Threading.Tasks;
 
 namespace EcoEnergySolutions
 {
-    public class SistemaHidroelectric : SistemaEnergia, ICalculEnergia
+    public class SistemaHidroelectric : SistemaEnergia
     {
         public float CabalAigua {  get; set; }
 
-        public SistemaHidroelectric(float cabalAigua)
+        public override void ConfigurarParametres(float valor)
         {
-            CabalAigua = cabalAigua;
+            while (valor >= 20)
+            {
+
+            }
+            valor = CabalAigua;
         }
 
-        public void ConfigurarParametres(float valor)
+        public override double CalcularEnergia()
         {
-            throw new NotImplementedException();
-        }
-
-        public double CalcularEnergia()
-        {
-            double energiaGenerada = CabalAigua * 9.8 * 0.8;
-            return energiaGenerada;
-        }
-
-        public void MostrarInforme()
-        {
-            throw new NotImplementedException();
+            EnergiaGenerada = CabalAigua * 9.8 * 0.8;
+            return EnergiaGenerada;
         }
     }
 }
