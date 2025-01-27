@@ -10,6 +10,7 @@ namespace EcoEnergySolutions
             const string MenuProgramMsg = "1. Iniciar Simulació: " +
                 "\n2. Veure informe de simulacions: " +
                 "\n3. Sortir: ";
+            const string MsgMenuError = "Numero no valid \nTorna a provar-lo";
             bool sortir = true;
             string menuNumSelect = "";
             int simulacionsActuals = 0;
@@ -24,15 +25,12 @@ namespace EcoEnergySolutions
                         break;
                     case "2":
                         InformeSimulacions(ref simulacionsActuals);
-                        Console.WriteLine("2 cas");
                         break;
                     case "3":
                         sortir = false;
-                        Console.WriteLine("3 cas");
                         break;
                     default:
-                        Console.WriteLine("4 cas");
-                        // errror
+                        Console.WriteLine(MsgMenuError);
                         break;
                 }
             }
