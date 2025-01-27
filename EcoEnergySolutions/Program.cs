@@ -1,4 +1,6 @@
-﻿namespace EcoEnergySolutions
+﻿using System;
+
+namespace EcoEnergySolutions
 {
     internal class Program
     {
@@ -47,15 +49,24 @@
             string tipusSistema = "";
             bool flag = true;
             int numSimulacions = 0;
-            BucleComprovacio(MsgSimulacions, numSimulacions);
+            bool flagCom = true;
+            while (flag)
+            {
+                Console.WriteLine(MsgSimulacions);
+                numSimulacions = ValidarNum(Console.ReadLine());
+                if (numSimulacions != 0)
+                {
+                    flagCom = false;
+                }
+            }
             simulacions = new SistemaEnergia[numSimulacions];
 
-            /*if (simulacionsActuals >= simulacions.Length)
+            if (simulacionsActuals >= simulacions.Length)
             {
                 Console.WriteLine(MsgSenseSimulacions);
                 return;
-            }*/
-            SistemaEnergia sistema = null;
+            }
+            SistemaEnergia? sistema;
             while (flag)
             {
                 Console.WriteLine(MsgTipusSistema);
@@ -89,25 +100,12 @@
         }
         public static void InformeSimulacions(ref int simulacionsActuals)
         {
-            /*Console.WriteLine("\n--- Informe de Simulacions ---");
+            Console.WriteLine("\n--- Informe de Simulacions ---");
             Console.WriteLine("Data\t\t\tTipus\t\tEnergia (kWh)");
             for (int i = 0; i < simulacionsActuals; i++)
             {
                 SistemaEnergia sim = simulacions[i];
-                Console.WriteLine($"{sim.DataSimulacio}\t{sim.GetType().Name}\t{sim.EnergiaGenerada:F2}");
-            }*/
-        }
-        public static void BucleComprovacio(string Missatge, int num)
-        {
-            bool flag = true;
-            while (flag)
-            {
-                Console.WriteLine(Missatge);
-                num = ValidarNum(Console.ReadLine());
-                if (num != 0)
-                {
-                    flag = false;
-                }
+                sim.MostrarInforme();
             }
         }
         public static int ValidarNum(string input)
