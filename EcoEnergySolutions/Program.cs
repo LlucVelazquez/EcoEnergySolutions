@@ -11,8 +11,8 @@ namespace EcoEnergySolutions
                 "\n2. Veure informe de simulacions: " +
                 "\n3. Sortir: ";
             const string MsgMenuError = "Numero no vàlid \nTorna a provar-lo";
-            bool sortir = true;
             string menuNumSelect = "";
+            bool sortir = true;
             bool flagCom = true;
             int simulacionsActuals = 0;
             while (sortir)
