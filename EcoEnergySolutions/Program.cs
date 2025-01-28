@@ -48,7 +48,7 @@ namespace EcoEnergySolutions
             bool flag = true;
             int numSimulacions = 0;
             bool flagCom = true;
-            while (flag)
+            while (flagCom)
             {
                 Console.WriteLine(MsgSimulacions);
                 numSimulacions = ValidarNum(Console.ReadLine());
@@ -64,7 +64,7 @@ namespace EcoEnergySolutions
                 Console.WriteLine(MsgSenseSimulacions);
                 return;
             }
-            SistemaEnergia? sistema;
+            SistemaEnergia? sistema = null;
             while (flag)
             {
                 Console.WriteLine(MsgTipusSistema);
@@ -89,17 +89,17 @@ namespace EcoEnergySolutions
                         break;
                 }
             }
-            /*sistema.ConfigurarParametres();
+            
+            sistema.ConfigurarParametres();
             sistema.CalcularEnergia();
-            sistema.DataSimulacio = DateTime.Now;
+            sistema.MostrarInforme();
 
             simulacions[simulacionsActuals] = sistema;
-            simulacionsActuals++;*/
+            simulacionsActuals++;
         }
         public static void InformeSimulacions(ref int simulacionsActuals)
         {
             Console.WriteLine("\n--- Informe de Simulacions ---");
-            Console.WriteLine("Data\t\t\tTipus\t\tEnergia (kWh)");
             for (int i = 0; i < simulacionsActuals; i++)
             {
                 SistemaEnergia sim = simulacions[i];

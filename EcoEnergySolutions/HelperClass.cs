@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EcoEnergySolutions
 {
-    public class HelperClass
+    public static class HelperClass
     {
         /*public static void BucleComprovacio(string Missatge, int num)
         {
@@ -20,7 +20,7 @@ namespace EcoEnergySolutions
                     flag = false;
                 }
             }
-        }
+        }*/
         public static int ValidarNum(string input)
         {
             int num = 0;
@@ -34,6 +34,19 @@ namespace EcoEnergySolutions
             }
             return num;
         }
-        */
+        public static float ValidarNumFloat(string input)
+        {
+            float num = 0;
+            try
+            {
+                num = float.Parse(input);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            return num;
+        }
+
     }
 }

@@ -10,13 +10,28 @@ namespace EcoEnergySolutions
     {
         public float CabalAigua {  get; set; }
 
-        public override void ConfigurarParametres(float valor)
+        public override float ConfigurarParametres()
         {
-            while (valor >= 20)
+            const string MsgConfPara = "Introdueix el valor del cabal d'aigua (minim 20): ";
+            bool flag = true;
+            bool validNum = true;
+            while (flag)
             {
-
+                while (validNum)
+                {
+                    Console.WriteLine(MsgConfPara);
+                    CabalAigua = HelperClass.ValidarNumFloat(Console.ReadLine());
+                    if (CabalAigua != 0)
+                    {
+                        validNum = false;
+                    }
+                }
+                if (CabalAigua >= 20)
+                {
+                    flag = false;
+                }
             }
-            valor = CabalAigua;
+            return CabalAigua;
         }
 
         public override double CalcularEnergia()
