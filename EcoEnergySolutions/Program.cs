@@ -13,6 +13,7 @@ namespace EcoEnergySolutions
             const string MsgMenuError = "Numero no valid \nTorna a provar-lo";
             bool sortir = true;
             string menuNumSelect = "";
+            bool flagCom = true;
             int simulacionsActuals = 0;
             while (sortir)
             {
@@ -21,7 +22,7 @@ namespace EcoEnergySolutions
                 switch (menuNumSelect)
                 {
                     case "1":
-                        IniciarSimulacio(ref simulacionsActuals);
+                        IniciarSimulacio(ref simulacionsActuals, ref flagCom);
                         break;
                     case "2":
                         InformeSimulacions(ref simulacionsActuals);
@@ -35,7 +36,7 @@ namespace EcoEnergySolutions
                 }
             }
         }
-        public static void IniciarSimulacio(ref int simulacionsActuals)
+        public static void IniciarSimulacio(ref int simulacionsActuals, ref bool flagCom)
         {
             const string MsgSimulacions = "Quantes simulacions vols generar?";
             const string MsgSenseSimulacions = "No hi ha espai per mes simulacions";
@@ -47,7 +48,7 @@ namespace EcoEnergySolutions
             string tipusSistema = "";
             bool flag = true;
             int numSimulacions = 0;
-            bool flagCom = true;
+            
             while (flagCom)
             {
                 Console.WriteLine(MsgSimulacions);
@@ -55,9 +56,10 @@ namespace EcoEnergySolutions
                 if (numSimulacions != 0)
                 {
                     flagCom = false;
+                    simulacions = new SistemaEnergia[numSimulacions];
                 }
             }
-            simulacions = new SistemaEnergia[numSimulacions];
+            
 
             if (simulacionsActuals >= simulacions.Length)
             {
@@ -92,7 +94,9 @@ namespace EcoEnergySolutions
             
             sistema.ConfigurarParametres();
             sistema.CalcularEnergia();
+            Console.WriteLine($"| {"Data Simulacio",-20} | {"Tipus Sistema",-20} | {"Energia Generada",-20} |");
             sistema.MostrarInforme();
+            Console.WriteLine("");
 
             simulacions[simulacionsActuals] = sistema;
             simulacionsActuals++;
@@ -100,10 +104,12 @@ namespace EcoEnergySolutions
         public static void InformeSimulacions(ref int simulacionsActuals)
         {
             Console.WriteLine("\n--- Informe de Simulacions ---");
+            Console.WriteLine($"| {"Data Simulacio",-20} | {"Tipus Sistema",-20} | {"Energia Generada",-20} |");
             for (int i = 0; i < simulacionsActuals; i++)
             {
                 SistemaEnergia sim = simulacions[i];
                 sim.MostrarInforme();
+                Console.WriteLine("");
             }
         }
         public static int ValidarNum(string input)
