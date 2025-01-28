@@ -18,19 +18,11 @@ namespace EcoEnergySolutions
         {
             const string MsgConfPara = "Introdueix el valor de les hores de sol disponibles (valor superior a 1): ";
             bool flag = true;
-            bool validNum = true;
             while (flag)
             {
-                while (validNum)
-                {
-                    Console.WriteLine(MsgConfPara);
-                    HoresDeSol = HelperClass.ValidarNumFloat(Console.ReadLine());
-                    if (HoresDeSol != 0)
-                    {
-                        validNum = false;
-                    }
-                }
-                if (HoresDeSol > 1)
+                Console.WriteLine(MsgConfPara);
+                HoresDeSol = HelperClass.ValidarNumFloat(Console.ReadLine());
+                if (HoresDeSol != 0 && HoresDeSol > 1)
                 {
                     flag = false;
                 }

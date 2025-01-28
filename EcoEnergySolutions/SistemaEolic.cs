@@ -15,19 +15,11 @@ namespace EcoEnergySolutions
         {
             const string MsgConfPara = "Introdueix el valor de velocitat del vent (minim 5): ";
             bool flag = true;
-            bool validNum = true;
             while (flag)
             {
-                while (validNum)
-                {
-                    Console.WriteLine(MsgConfPara);
-                    VelocitatVent = HelperClass.ValidarNumFloat(Console.ReadLine());
-                    if (VelocitatVent != 0)
-                    {
-                        validNum = false;
-                    }
-                }
-                if (VelocitatVent >= 5)
+                Console.WriteLine(MsgConfPara);
+                VelocitatVent = HelperClass.ValidarNumFloat(Console.ReadLine());
+                if (VelocitatVent != 0 && VelocitatVent >= 5)
                 {
                     flag = false;
                 }

@@ -10,7 +10,7 @@ namespace EcoEnergySolutions
             const string MenuProgramMsg = "1. Iniciar Simulació: " +
                 "\n2. Veure informe de simulacions: " +
                 "\n3. Sortir: ";
-            const string MsgMenuError = "Numero no valid \nTorna a provar-lo";
+            const string MsgMenuError = "Numero no vàlid \nTorna a provar-lo";
             bool sortir = true;
             string menuNumSelect = "";
             bool flagCom = true;
@@ -42,9 +42,9 @@ namespace EcoEnergySolutions
             const string MsgSenseSimulacions = "No hi ha espai per mes simulacions";
             const string MsgTipusSistema = "Selecciona el tipus de sistema: " +
                 "\n1. Solar" +
-                "\n2. Eolic" +
-                "\n3. Hidroelectric";
-            const string MsgError = "Opcio no valida";
+                "\n2. Eòlic" +
+                "\n3. Hidroeléctric";
+            const string MsgError = "Opció no valida";
             string tipusSistema = "";
             bool flag = true;
             int numSimulacions = 0;
@@ -52,11 +52,14 @@ namespace EcoEnergySolutions
             while (flagCom)
             {
                 Console.WriteLine(MsgSimulacions);
-                numSimulacions = ValidarNum(Console.ReadLine());
-                if (numSimulacions != 0)
+                numSimulacions = HelperClass.ValidarNum(Console.ReadLine());
+                if (numSimulacions != 0 && numSimulacions >= 0)
                 {
                     flagCom = false;
                     simulacions = new SistemaEnergia[numSimulacions];
+                }else
+                {
+                    Console.WriteLine(MsgError);
                 }
             }
             
@@ -111,19 +114,6 @@ namespace EcoEnergySolutions
                 sim.MostrarInforme();
                 Console.WriteLine("");
             }
-        }
-        public static int ValidarNum(string input)
-        {
-            int num = 0;
-            try
-            {
-                num = int.Parse(input);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            return num;
         }
     }
 }

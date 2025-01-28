@@ -14,19 +14,11 @@ namespace EcoEnergySolutions
         {
             const string MsgConfPara = "Introdueix el valor del cabal d'aigua (minim 20): ";
             bool flag = true;
-            bool validNum = true;
             while (flag)
             {
-                while (validNum)
-                {
-                    Console.WriteLine(MsgConfPara);
-                    CabalAigua = HelperClass.ValidarNumFloat(Console.ReadLine());
-                    if (CabalAigua != 0)
-                    {
-                        validNum = false;
-                    }
-                }
-                if (CabalAigua >= 20)
+                Console.WriteLine(MsgConfPara);
+                CabalAigua = HelperClass.ValidarNumFloat(Console.ReadLine());
+                if (CabalAigua != 0 && CabalAigua >= 20)
                 {
                     flag = false;
                 }
