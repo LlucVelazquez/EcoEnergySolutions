@@ -8,19 +8,7 @@ namespace EcoEnergySolutions
 {
     public static class HelperClass
     {
-        /*public static void BucleComprovacio(string Missatge, int num)
-        {
-            bool flag = true;
-            while (flag)
-            {
-                Console.WriteLine(Missatge);
-                num = ValidarNum(Console.ReadLine());
-                if (num != 0)
-                {
-                    flag = false;
-                }
-            }
-        }*/
+
         public static int ValidarNum(string input)
         {
             int num = 0;
