@@ -8,15 +8,17 @@ namespace EcoEnergySolutions
 {
     public abstract class SistemaEnergia : ICalculEnergia
     {
-        protected DateTime DataSimulacio {  get; set; }
+        public DateTime DataSimulacio {  get; } = DateTime.Now;
         protected double EnergiaGenerada { get; set; }
 
-        public abstract void ConfigurarParametres(float valor);
+        public abstract float ConfigurarParametres();
         public abstract double CalcularEnergia();
 
         public virtual void MostrarInforme()
         {
-            Console.WriteLine($"Data: {DataSimulacio}, Energia: {EnergiaGenerada} kWh");
+            
+            Console.WriteLine(new string('-', 70));
+            Console.WriteLine($"| {DataSimulacio,-20} | {GetType().Name,-20} | {CalcularEnergia(),-20:F2} |");
         }
     }
 }

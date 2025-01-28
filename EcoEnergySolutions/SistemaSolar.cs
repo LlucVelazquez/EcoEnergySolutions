@@ -14,13 +14,20 @@ namespace EcoEnergySolutions
         /// 
         /// </summary>
         /// <param name="valor"></param>
-        public override void ConfigurarParametres(float valor) 
+        public override float ConfigurarParametres() 
         {
-            while (valor < 1)
+            const string MsgConfPara = "Introdueix el valor de les hores de sol disponibles (valor superior a 1): ";
+            bool flag = true;
+            while (flag)
             {
-
+                Console.WriteLine(MsgConfPara);
+                HoresDeSol = HelperClass.ValidarNumFloat(Console.ReadLine());
+                if (HoresDeSol != 0 && HoresDeSol > 1)
+                {
+                    flag = false;
+                }
             }
-            valor = HoresDeSol;
+            return HoresDeSol;
         }
         public override double CalcularEnergia()
         {
